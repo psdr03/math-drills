@@ -17,6 +17,9 @@ const Questions = (props: any) => {
     <Grid
       container
       justifyContent="center"
+      sx={{
+        marginTop: '20px'
+      }}
     >
       <Box
         sx={{

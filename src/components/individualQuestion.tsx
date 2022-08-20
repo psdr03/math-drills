@@ -5,6 +5,7 @@ import {
   Paper,
   InputAdornment,
 } from '@mui/material'
+import { TEXT } from '../constants/constants'
 
 const IndividualQuestion = (props: any) => {
   const { question } = props
@@ -35,7 +36,7 @@ const IndividualQuestion = (props: any) => {
 
       <TextField
         error={error}
-        label={error ? 'Wrong answer' : null}
+        label={error ? TEXT.WRONG : null}
         disabled={isCorrect}
         autoComplete="off"
         InputProps={{
@@ -57,7 +58,7 @@ const IndividualQuestion = (props: any) => {
         disabled={userAnswer === 0 ? true : false}
         color={!error ? 'success' : 'error'}
       >
-        {isCorrect ? 'CORRECT' : 'SUBMIT'}
+        {isCorrect ? TEXT.CORRECT : TEXT.SUBMIT}
       </Button>
     </Paper>
   )

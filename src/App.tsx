@@ -67,6 +67,8 @@ const App = () => {
     for (let x = 0; x < questionsNum; x++) {
       let first = generateNum(maxNum);
       let second = generateNum(maxNum)
+
+      // For subtraction operations, we make sure that the larger number is in the first position so that the difference is always positive. Can remove if negative is ok.
       if (operation === 'subtraction') {
         let tempArray = [first, second];
         tempArray.sort((a, b) => a - b)
@@ -126,7 +128,8 @@ const App = () => {
             onChange={handleOperationChange}
             sx={{
               margin: '20px',
-              width: '250px'
+              width: '250px',
+              textAlign: 'left'
             }}
           >
             {operationsList.map((option: string) => (
