@@ -1,11 +1,7 @@
 import React from 'react';
 import {
   Grid,
-  Box,
-  Card,
-  TextField,
-  Paper,
-  InputAdornment,
+  Box
 } from '@mui/material'
 import IndividualQuestion from './individualQuestion'
 

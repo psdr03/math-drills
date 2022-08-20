@@ -1,7 +1,7 @@
 {
   "name": "math-drills",
   "version": "0.1.0",
-  "homepage": "https://psdr03.github.io/math-drillssss/",
+  "homepage": "https://psdr03.github.io/math-drills/",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.10.0",

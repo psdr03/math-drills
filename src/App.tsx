@@ -1,4 +1,6 @@
-import React, { ReactEventHandler, useState } from 'react';
+import React, { useState } from 'react';
+import { ThemeProvider, createTheme } from '@mui/material/styles'
+import CssBaseline from '@mui/material/CssBaseline'
 import {
   TextField,
   Grid,
@@ -12,6 +14,12 @@ interface QuestionObject {
   question: string,
   answer: number
 }
+
+const darkTheme = createTheme({
+  palette: {
+    mode: 'dark'
+  }
+})
 
 const App = () => {
   const [maxNum, setMaxNum] = useState<number>(0);
@@ -44,7 +52,8 @@ const App = () => {
   }
 
   return (
-    <>
+    <ThemeProvider theme={darkTheme}>
+      <CssBaseline />
       <Grid container justifyContent="center"
         sx={{
           display: 'flex',
@@ -56,36 +65,43 @@ const App = () => {
             textAlign: 'center',
           }}
         >
-            <h1>Cesca's Math drills</h1>
-            <h2>CescaMakulit</h2>
-            <TextField
-              id="outlined-basic" 
-              label="Maximum number" 
-              variant="outlined" 
-              onChange={maxNumHandleChange}
-              autoComplete="off"
-              sx={{
-                width: '100%',
-                margin: '10px'
-              }}
-            />
-            <TextField
-              id="outlined-basic" 
-              label="Number of questions" 
-              variant="outlined" 
-              onChange={questionsHandleChange}
-              autoComplete="off"
-              sx={{
-                width: '100%',
-                margin: '10px'
-              }}
-            />
-          <Button onClick={generateQuestions} sx={{margin: '10px'}} variant="contained">Create drills</Button>
+          <h1>Cesca's Math drills</h1>
+          <h2>CescaMakulit</h2>
+          <TextField
+            id="outlined-basic"
+            label="Maximum number"
+            variant="outlined"
+            onChange={maxNumHandleChange}
+            autoComplete="off"
+            sx={{
+              minWidth: '280px',
+              margin: '10px'
+            }}
+          />
+          <TextField
+            id="outlined-basic"
+            label="Number of questions"
+            variant="outlined"
+            onChange={questionsHandleChange}
+            autoComplete="off"
+            sx={{
+              minWidth: '280px',
+              margin: '10px'
+            }}
+          />
         </Box>
       </Grid>
-      <Divider sx={{marginTop: '20px'}}/>
-      { questionsList.length === 0 ? null : <Questions questionsArray={questionsList}></Questions>}
-    </>
+      <Box
+        sx={{
+          alignItems: 'center',
+          textAlign: 'center',
+        }}
+      >
+        <Button onClick={generateQuestions} sx={{ margin: '10px' }} variant="contained">Create drills</Button>
+      </Box>
+      <Divider sx={{ marginTop: '20px' }} />
+      {questionsList.length === 0 ? null : <Questions questionsArray={questionsList}></Questions>}
+    </ThemeProvider>
   );
 }
 
