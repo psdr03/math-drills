@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/math-drills/static/css/main.e6c13ad2.css",
-    "main.js": "/math-drills/static/js/main.ad948321.js",
-    "static/js/787.27b91914.chunk.js": "/math-drills/static/js/787.27b91914.chunk.js",
-    "index.html": "/math-drills/index.html",
-    "main.e6c13ad2.css.map": "/math-drills/static/css/main.e6c13ad2.css.map",
-    "main.ad948321.js.map": "/math-drills/static/js/main.ad948321.js.map",
-    "787.27b91914.chunk.js.map": "/math-drills/static/js/787.27b91914.chunk.js.map"
+    "main.css": "/math-drillssss/static/css/main.e6c13ad2.css",
+    "main.js": "/math-drillssss/static/js/main.b3c41f88.js",
+    "static/js/787.27b91914.chunk.js": "/math-drillssss/static/js/787.27b91914.chunk.js",
+    "index.html": "/math-drillssss/index.html",
+    "main.e6c13ad2.css.map": "/math-drillssss/static/css/main.e6c13ad2.css.map",
+    "main.b3c41f88.js.map": "/math-drillssss/static/js/main.b3c41f88.js.map",
+    "787.27b91914.chunk.js.map": "/math-drillssss/static/js/787.27b91914.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e6c13ad2.css",
-    "static/js/main.ad948321.js"
+    "static/js/main.b3c41f88.js"
   ]
 }
