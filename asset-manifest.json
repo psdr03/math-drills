@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/math-drills/static/css/main.e6c13ad2.css",
-    "main.js": "/math-drills/static/js/main.9e24356c.js",
+    "main.js": "/math-drills/static/js/main.3937fa90.js",
     "static/js/787.27b91914.chunk.js": "/math-drills/static/js/787.27b91914.chunk.js",
     "index.html": "/math-drills/index.html",
     "main.e6c13ad2.css.map": "/math-drills/static/css/main.e6c13ad2.css.map",
-    "main.9e24356c.js.map": "/math-drills/static/js/main.9e24356c.js.map",
+    "main.3937fa90.js.map": "/math-drills/static/js/main.3937fa90.js.map",
     "787.27b91914.chunk.js.map": "/math-drills/static/js/787.27b91914.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e6c13ad2.css",
-    "static/js/main.9e24356c.js"
+    "static/js/main.3937fa90.js"
   ]
 }
