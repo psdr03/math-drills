@@ -1,8 +1,8 @@
-export interface QuestionObject {
+export interface IQuestionObject {
   question: string,
   answer: number
 }
 
-export interface Woo {
-  test: string
+export interface IOperationsSymbol {
+  [key: string]: string
 }

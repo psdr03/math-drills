@@ -10,6 +10,7 @@ import {
   MenuItem
 } from '@mui/material'
 import Questions from './components/questionsList';
+import { IOperationsSymbol } from './interfaces/interfaces';
 
 interface QuestionObject {
   question: string,
@@ -42,12 +43,14 @@ const App = () => {
 
   const operationsList = [
     'addition',
-    'multiplication'
+    'multiplication',
+    'subtraction'
   ]
 
-  const operationsSymbol: any = {
+  const operationsSymbol: IOperationsSymbol = {
     addition: '+',
-    multiplication: 'x'
+    multiplication: 'x',
+    subtraction: '-'
   }
 
   const handleOperationChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -56,13 +59,20 @@ const App = () => {
 
   const operationFunctions: any = {
     'addition': (x: number, y: number) => { return x + y },
-    'multiplication': (x: number, y: number) => { return x * y }
+    'multiplication': (x: number, y: number) => { return x * y },
+    'subtraction': (x: number, y: number) => { return x - y }
   }
 
   const generateQuestions = () => {
     for (let x = 0; x < questionsNum; x++) {
-      const first = generateNum(maxNum);
-      const second = generateNum(maxNum)
+      let first = generateNum(maxNum);
+      let second = generateNum(maxNum)
+      if (operation === 'subtraction') {
+        let tempArray = [first, second];
+        tempArray.sort((a, b) => a - b)
+        first = tempArray[1];
+        second = tempArray[0]
+      }
       const currentQuestion = `${first} ${operationsSymbol[operation]} ${second}`;
       const obj = {
         question: currentQuestion,
