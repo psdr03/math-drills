@@ -42,7 +42,7 @@ const App = () => {
     return Math.floor(Math.random() * (max - 1 + 1) + 1)
   }
 
-  const operationsList = [
+  const operationsList: string[] = [
     'addition',
     'multiplication',
     'subtraction'

@@ -4,13 +4,9 @@ import {
   Box
 } from '@mui/material'
 import IndividualQuestion from './individualQuestion'
+import { IQuestionObject, IQuestionsProps } from '../interfaces/interfaces'
 
-interface QuestionObject {
-  question: string,
-  answer: number
-}
-
-const Questions = (props: any) => {
+const Questions = (props: IQuestionsProps) => {
   const { questionsArray } = props;
 
   return (
@@ -29,7 +25,7 @@ const Questions = (props: any) => {
           flexWrap: 'wrap'
         }}
       >
-        {questionsArray.map((item: QuestionObject) => {
+        {questionsArray.map((item: IQuestionObject) => {
           return (
             <IndividualQuestion question={item.question} answer={item.answer}></IndividualQuestion>
           )

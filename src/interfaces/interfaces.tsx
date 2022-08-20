@@ -6,3 +6,7 @@ export interface IQuestionObject {
 export interface IOperationsSymbol {
   [key: string]: string
 }
+
+export interface IQuestionsProps {
+  questionsArray: IQuestionObject[]
+}

@@ -6,8 +6,9 @@ import {
   InputAdornment,
 } from '@mui/material'
 import { TEXT } from '../constants/constants'
+import { IQuestionObject } from '../interfaces/interfaces'
 
-const IndividualQuestion = (props: any) => {
+const IndividualQuestion = (props: IQuestionObject) => {
   const { question } = props
   const { answer } = props
   const [error, setError] = useState(false)
