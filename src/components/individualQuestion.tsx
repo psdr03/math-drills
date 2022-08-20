@@ -43,7 +43,7 @@ const IndividualQuestion = (props: any) => {
         }}
         onChange={handleOnChange}
         sx={{
-          minWidth: '280px'
+          maxWidth: '250px'
         }}
       >
       </TextField>
@@ -57,7 +57,7 @@ const IndividualQuestion = (props: any) => {
         disabled={userAnswer === 0 ? true : false}
         color={!error ? 'success' : 'error'}
       >
-        {isCorrect ? 'CHECK' : 'SUBMIT'}
+        {isCorrect ? 'CORRECT' : 'SUBMIT'}
       </Button>
     </Paper>
   )

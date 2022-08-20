@@ -6,7 +6,8 @@ import {
   Grid,
   Box,
   Button,
-  Divider
+  Divider,
+  MenuItem
 } from '@mui/material'
 import Questions from './components/questionsList';
 
@@ -25,6 +26,7 @@ const App = () => {
   const [maxNum, setMaxNum] = useState<number>(0);
   const [questionsNum, setQuestionsNum] = useState<number>(0);
   const [questionsList, setQuestionsList] = useState<QuestionObject[]>([]);
+  const [operation, setOperation] = useState<string>('none')
 
   const maxNumHandleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setMaxNum(parseInt(event.target.value));
@@ -38,14 +40,33 @@ const App = () => {
     return Math.floor(Math.random() * (max - 1 + 1) + 1)
   }
 
+  const operationsList = [
+    'addition',
+    'multiplication'
+  ]
+
+  const operationsSymbol: any = {
+    addition: '+',
+    multiplication: 'x'
+  }
+
+  const handleOperationChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setOperation(event.target.value)
+  }
+
+  const operationFunctions: any = {
+    'addition': (x: number, y: number) => { return x + y },
+    'multiplication': (x: number, y: number) => { return x * y }
+  }
+
   const generateQuestions = () => {
     for (let x = 0; x < questionsNum; x++) {
       const first = generateNum(maxNum);
       const second = generateNum(maxNum)
-      const currentQuestion = `${first} x ${second}`;
+      const currentQuestion = `${first} ${operationsSymbol[operation]} ${second}`;
       const obj = {
         question: currentQuestion,
-        answer: first * second
+        answer: operationFunctions[operation](first, second),
       }
       setQuestionsList(questionsList => [...questionsList, obj])
     }
@@ -74,8 +95,8 @@ const App = () => {
             onChange={maxNumHandleChange}
             autoComplete="off"
             sx={{
-              minWidth: '280px',
-              margin: '10px'
+              margin: '20px',
+              width: '250px'
             }}
           />
           <TextField
@@ -85,10 +106,25 @@ const App = () => {
             onChange={questionsHandleChange}
             autoComplete="off"
             sx={{
-              minWidth: '280px',
-              margin: '10px'
+              margin: '20px',
+              width: '250px'
             }}
           />
+          <TextField
+            label="Operation"
+            select
+            onChange={handleOperationChange}
+            sx={{
+              margin: '20px',
+              width: '250px'
+            }}
+          >
+            {operationsList.map((option: string) => (
+              <MenuItem key={option} value={option}>
+                {option}
+              </MenuItem>
+            ))}
+          </TextField>
         </Box>
       </Grid>
       <Box
