@@ -11,6 +11,7 @@ import {
 } from '@mui/material'
 import Questions from './components/questionsList';
 import { IOperationsSymbol } from './interfaces/interfaces';
+import { DIVISION_NUMS } from './constants/constants';
 
 interface QuestionObject {
   question: string,
@@ -45,13 +46,15 @@ const App = () => {
   const operationsList: string[] = [
     'addition',
     'multiplication',
-    'subtraction'
+    'subtraction',
+    'division'
   ]
 
   const operationsSymbol: IOperationsSymbol = {
     addition: '+',
     multiplication: 'x',
-    subtraction: '-'
+    subtraction: '-',
+    division: '÷'
   }
 
   const handleOperationChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -65,7 +68,8 @@ const App = () => {
   const operationFunctions: any = {
     'addition': (x: number, y: number) => { return x + y },
     'multiplication': (x: number, y: number) => { return x * y },
-    'subtraction': (x: number, y: number) => { return x - y }
+    'subtraction': (x: number, y: number) => { return x - y },
+    'division': (x: number, y: number) => { return x / y }
   }
 
   const generateQuestions = () => {
@@ -79,6 +83,13 @@ const App = () => {
         tempArray.sort((a, b) => a - b)
         first = tempArray[1];
         second = tempArray[0]
+      }
+
+      if (operation === 'division') {
+        second = generateNum(DIVISION_NUMS.MAX);
+        first = second * generateNum(DIVISION_NUMS.MAX_MULTIPLIER)
+        // 9 * 14
+
       }
       const currentQuestion = `${first} ${operationsSymbol[operation]} ${second}`;
       const obj = {
