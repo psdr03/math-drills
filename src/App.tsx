@@ -24,6 +24,7 @@ const darkTheme = createTheme({
 })
 
 const App = () => {
+  document.title = "Cesca's Math Drills"
   const [maxNum, setMaxNum] = useState<number>(0);
   const [questionsNum, setQuestionsNum] = useState<number>(0);
   const [questionsList, setQuestionsList] = useState<QuestionObject[]>([]);
@@ -102,8 +103,7 @@ const App = () => {
             textAlign: 'center',
           }}
         >
-          <h1>Cesca's Math drills</h1>
-          <h2>CescaMakulit</h2>
+          <h1>Cesca's Math Drills</h1>
           <TextField
             id="outlined-basic"
             label="Maximum number"
@@ -157,7 +157,7 @@ const App = () => {
           textAlign: 'center',
         }}
       >
-        <Button onClick={generateQuestions} sx={{ margin: '10px' }} variant="contained">Create drills</Button>
+        <Button size="large" onClick={generateQuestions} sx={{ margin: '10px' }} variant="contained">Create drills</Button>
       </Box>
       <Divider sx={{ marginTop: '20px' }} />
       {questionsList.length === 0 ? null : <Questions questionsArray={questionsList}></Questions>}
@@ -168,7 +168,7 @@ const App = () => {
           textAlign: 'center',
         }}
       >
-        {questionsList.length === 0 ? null : <Button sx={{ marginTop: '50px' }} variant="contained" onClick={handleReset}>Reset</Button>}
+        {questionsList.length === 0 ? null : <Button size="large" sx={{ marginTop: '50px' }} variant="contained" onClick={handleReset}>Reset</Button>}
       </Box>
 
     </ThemeProvider>
