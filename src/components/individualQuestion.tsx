@@ -46,6 +46,9 @@ const IndividualQuestion = (props: any) => {
         sx={{
           maxWidth: '250px'
         }}
+        inputProps={{
+          type: "number"
+        }}
       >
       </TextField>
       <Button

@@ -110,6 +110,9 @@ const App = () => {
             variant="outlined"
             onChange={maxNumHandleChange}
             autoComplete="off"
+            inputProps={{
+              type: "number"
+            }}
             sx={{
               margin: '20px',
               width: '250px'
@@ -121,6 +124,9 @@ const App = () => {
             variant="outlined"
             onChange={questionsHandleChange}
             autoComplete="off"
+            inputProps={{
+              type: "number"
+            }}
             sx={{
               margin: '20px',
               width: '250px'
@@ -130,6 +136,7 @@ const App = () => {
             label="Operation"
             select
             onChange={handleOperationChange}
+            type="number"
             sx={{
               margin: '20px',
               width: '250px',
