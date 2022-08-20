@@ -11,7 +11,7 @@ const IndividualQuestion = (props: any) => {
   const { question } = props
   const { answer } = props
   const [error, setError] = useState(false)
-  const [userAnswer, setUserAnswer] = useState(0);
+  const [userAnswer, setUserAnswer] = useState<number | null>(null);
   const [isCorrect, setIsCorrect] = useState(false);
 
   const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -55,8 +55,8 @@ const IndividualQuestion = (props: any) => {
         }}
         variant="contained"
         onClick={handleSubmit}
-        disabled={userAnswer === 0 ? true : false}
         color={!error ? 'success' : 'error'}
+        disabled={userAnswer === null ? true : false}
       >
         {isCorrect ? TEXT.CORRECT : TEXT.SUBMIT}
       </Button>

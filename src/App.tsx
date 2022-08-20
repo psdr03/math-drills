@@ -57,6 +57,10 @@ const App = () => {
     setOperation(event.target.value)
   }
 
+  const handleReset = () => {
+    setQuestionsList([]);
+  }
+
   const operationFunctions: any = {
     'addition': (x: number, y: number) => { return x + y },
     'multiplication': (x: number, y: number) => { return x * y },
@@ -150,6 +154,16 @@ const App = () => {
       </Box>
       <Divider sx={{ marginTop: '20px' }} />
       {questionsList.length === 0 ? null : <Questions questionsArray={questionsList}></Questions>}
+
+      <Box
+        sx={{
+          alignItems: 'center',
+          textAlign: 'center',
+        }}
+      >
+        {questionsList.length === 0 ? null : <Button sx={{ marginTop: '50px' }} variant="contained" onClick={handleReset}>Reset</Button>}
+      </Box>
+
     </ThemeProvider>
   );
 }
