@@ -85,11 +85,10 @@ const App = () => {
         second = tempArray[0]
       }
 
+      // For division whole numbers only, no remainder
       if (operation === 'division') {
         second = generateNum(DIVISION_NUMS.MAX);
         first = second * generateNum(DIVISION_NUMS.MAX_MULTIPLIER)
-        // 9 * 14
-
       }
       const currentQuestion = `${first} ${operationsSymbol[operation]} ${second}`;
       const obj = {
