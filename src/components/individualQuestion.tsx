@@ -41,14 +41,14 @@ const IndividualQuestion = (props: IQuestionObject) => {
         disabled={isCorrect}
         autoComplete="off"
         InputProps={{
-          startAdornment: <InputAdornment position="start">{question} = </InputAdornment>,
+          startAdornment: <InputAdornment position='start'>{question} = </InputAdornment>,
         }}
         onChange={handleOnChange}
         sx={{
           maxWidth: '250px'
         }}
         inputProps={{
-          type: "number"
+          type: 'number'
         }}
       >
       </TextField>
@@ -57,7 +57,7 @@ const IndividualQuestion = (props: IQuestionObject) => {
           height: '100%',
           width: '120px'
         }}
-        variant="contained"
+        variant='contained'
         onClick={handleSubmit}
         color={!error ? 'success' : 'error'}
         disabled={userAnswer === null ? true : false}

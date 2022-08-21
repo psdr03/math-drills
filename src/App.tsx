@@ -10,13 +10,8 @@ import {
   MenuItem
 } from '@mui/material'
 import Questions from './components/questionsList';
-import { IOperationsSymbol } from './interfaces/interfaces';
-import { DIVISION_NUMS } from './constants/constants';
-
-interface QuestionObject {
-  question: string,
-  answer: number
-}
+import { IOperationsObjectSource, IQuestionObject } from './interfaces/interfaces';
+import { DIVISION_NUMS, SYMBOLS, OPERATIONS } from './constants/constants';
 
 const darkTheme = createTheme({
   palette: {
@@ -28,8 +23,8 @@ const App = () => {
   document.title = "Cesca's Math Drills"
   const [maxNum, setMaxNum] = useState<number>(0);
   const [questionsNum, setQuestionsNum] = useState<number>(0);
-  const [questionsList, setQuestionsList] = useState<QuestionObject[]>([]);
-  const [operation, setOperation] = useState<string>('none')
+  const [questionsList, setQuestionsList] = useState<IQuestionObject[]>([]);
+  const [userOperation, setUserOperation] = useState<string>('none')
 
   const maxNumHandleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setMaxNum(parseInt(event.target.value));
@@ -43,33 +38,31 @@ const App = () => {
     return Math.floor(Math.random() * (max - 1 + 1) + 1)
   }
 
-  const operationsList: string[] = [
-    'addition',
-    'multiplication',
-    'subtraction',
-    'division'
-  ]
-
-  const operationsSymbol: IOperationsSymbol = {
-    addition: '+',
-    multiplication: 'x',
-    subtraction: '-',
-    division: '÷'
+  const operationsSource: IOperationsObjectSource = {
+    addition: {
+      symbol: SYMBOLS.ADDITION,
+      fn: (x: number, y: number) => { return x + y }
+    },
+    multiplication: {
+      symbol: SYMBOLS.MULTIPLICATION,
+      fn: (x: number, y: number) => { return x * y }
+    },
+    subtraction: {
+      symbol: SYMBOLS.SUBTRACTION,
+      fn: (x: number, y: number) => { return x - y }
+    },
+    division: {
+      symbol: SYMBOLS.DIVISION,
+      fn: (x: number, y: number) => { return x / y }
+    }
   }
 
   const handleOperationChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setOperation(event.target.value)
+    setUserOperation(event.target.value)
   }
 
   const handleReset = () => {
     setQuestionsList([]);
-  }
-
-  const operationFunctions: any = {
-    'addition': (x: number, y: number) => { return x + y },
-    'multiplication': (x: number, y: number) => { return x * y },
-    'subtraction': (x: number, y: number) => { return x - y },
-    'division': (x: number, y: number) => { return x / y }
   }
 
   const generateQuestions = () => {
@@ -78,7 +71,7 @@ const App = () => {
       let second = generateNum(maxNum)
 
       // For subtraction operations, we make sure that the larger number is in the first position so that the difference is always positive. Can remove if negative is ok.
-      if (operation === 'subtraction') {
+      if (userOperation === OPERATIONS.SUBTRACTION) {
         let tempArray = [first, second];
         tempArray.sort((a, b) => a - b)
         first = tempArray[1];
@@ -86,14 +79,16 @@ const App = () => {
       }
 
       // For division whole numbers only, no remainder
-      if (operation === 'division') {
+      if (userOperation === OPERATIONS.DIVISION) {
         second = generateNum(DIVISION_NUMS.MAX);
         first = second * generateNum(DIVISION_NUMS.MAX_MULTIPLIER)
       }
-      const currentQuestion = `${first} ${operationsSymbol[operation]} ${second}`;
+
+      // Formulate the question and answer and save to state
+      const currentQuestion = `${first} ${operationsSource[userOperation].symbol} ${second}`;
       const obj = {
         question: currentQuestion,
-        answer: operationFunctions[operation](first, second),
+        answer: operationsSource[userOperation].fn(first, second),
       }
       setQuestionsList(questionsList => [...questionsList, obj])
     }
@@ -153,7 +148,7 @@ const App = () => {
               textAlign: 'left'
             }}
           >
-            {operationsList.map((option: string) => (
+            {Object.keys(operationsSource).map((option: string) => (
               <MenuItem key={option} value={option}>
                 {option}
               </MenuItem>

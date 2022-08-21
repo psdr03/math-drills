@@ -10,3 +10,12 @@ export interface IOperationsSymbol {
 export interface IQuestionsProps {
   questionsArray: IQuestionObject[]
 }
+
+export interface IOperationSolo {
+  symbol: string,
+  fn: Function
+}
+
+export interface IOperationsObjectSource {
+  [key: string]: IOperationSolo
+}
