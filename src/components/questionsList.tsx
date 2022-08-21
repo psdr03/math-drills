@@ -19,7 +19,7 @@ const Questions = (props: IQuestionsProps) => {
     >
       <Box
         sx={{
-          width: '60%',
+          width: '80%',
           display: 'flex',
           justifyContent: 'center',
           flexWrap: 'wrap'
