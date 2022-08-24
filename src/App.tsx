@@ -80,7 +80,6 @@ const App = () => {
 
       // For division whole numbers only, no remainder
       if (userOperation === OPERATIONS.DIVISION) {
-        second = generateNum(DIVISION_NUMS.MAX);
         first = second * generateNum(DIVISION_NUMS.MAX_MULTIPLIER)
       }
 
