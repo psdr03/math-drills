@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/math-drills/static/js/main.327bc6f2.js",
+    "main.js": "/math-drills/static/js/main.d19da0aa.js",
     "index.html": "/math-drills/index.html",
-    "main.327bc6f2.js.map": "/math-drills/static/js/main.327bc6f2.js.map"
+    "main.d19da0aa.js.map": "/math-drills/static/js/main.d19da0aa.js.map"
   },
   "entrypoints": [
-    "static/js/main.327bc6f2.js"
+    "static/js/main.d19da0aa.js"
   ]
 }
